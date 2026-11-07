@@ -6,8 +6,16 @@
     <title th:text="${Servidor}">Pagina Spring Boot</title>
 </head>
 <body>
-    <h1 th:text="${Nombre}"></h1>
-    <h2 th:text="${Servidor}"></h2>
-    <h2 th:text="${Materia}"></h2>
+    <h1>Información de empleado</h1>
+    <ul>
+        <li><strong>Nombre:</strong> <span th:text="${Empleado.nombre}"></span></li>
+        <li><strong>Apellido:</strong> <span th:text="${Empleado.apellido}"></span></li>
+        <li><strong>Dirección:</strong> <span th:text="${Empleado.direccion}"></span></li>
+        <li><strong>Puesto:</strong> <span th:text="${Empleado.puesto}"></span></li>
+        <li><strong>Edad:</strong> <span th:text="${Empleado.edad}"></span></li>
+        <li><strong>Teléfono:</strong> <span th:text="${Empleado.telefono}"></span></li>
+        <li><strong>ID:</strong> <span th:text="${Empleado.id}"></span></li>
+    </ul>
+
 </body>
 </html>
