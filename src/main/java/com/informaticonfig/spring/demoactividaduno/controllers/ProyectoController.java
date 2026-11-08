@@ -11,7 +11,7 @@ public class ProyectoController {
     @GetMapping("/proyecto")
     public String info(Map<String, Object> modelo) {
         modelo.put("Nombre", "Daniel Juarez");
-        modelo.put("Servidor", "JRDAact1_t4");
+        modelo.put("Servidor", "JRDAact2_t4");
         modelo.put("Materia", "Programación Web");
 
         return "proyecto";

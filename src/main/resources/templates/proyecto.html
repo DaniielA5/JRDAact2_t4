@@ -6,56 +6,8 @@
     <title th:text="${Servidor}">Pagina Spring Boot</title>
 </head>
 <body>
-    <h1>Información de empleado</h1>
-    <ul>
-        <li><strong>Nombre:</strong> <span th:text="${Empleado.nombre}"></span></li>
-        <li><strong>Apellido:</strong> <span th:text="${Empleado.apellido}"></span></li>
-        <li>
-            <strong>Direccion:</strong>
-            <span th:text="${Empleado.direccion != null ? Empleado.direccion : 'No tiene direccion'}"></span>
-         </li>
-        <li><strong>Puesto:</strong> <span th:text="${Empleado.puesto}"></span></li>
-        <li><strong>Edad:</strong> <span th:text="${Empleado.edad}"></span></li>
-        <li><strong>Teléfono:</strong> <span th:text="${Empleado.telefono}"></span></li>
-        <li><strong>ID:</strong> <span th:text="${Empleado.id}"></span></li>
-    </ul>
-
-    <h1>Lista de Empleados</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Dirección</th>
-                <th>Puesto</th>
-                <th>Edad</th>
-                <th>Teléfono</th>
-                <th>Departamento</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="Empleado : ${Empleados}">
-                <td th:text="${Empleado.nombre}"></td>
-                <td th:text="${Empleado.apellido}"></td>
-                <td th:text="${Empleado.direccion}"></td>
-                <td th:text="${Empleado.puesto}"></td>
-                <td th:text="${Empleado.edad}"></td>
-                <td th:text="${Empleado.telefono}"></td>
-                <td th:text="${Empleado.id}"></td>
-            </tr>
-        </tbody>
-    </table>
-<!-- 	
-	==================VALORES LISTA============================
-	    new Empleados("María", "Perez", "Calle segunda no.2",
-          "Secretaria", 20, 123654987, 02),
-          new Empleados("María", "Perez", "Calle segunda no.2", "Secretaria", 20, 123654987, 02),
-          new Empleados("Juan", "Rodriguez", "Calle primera no.1", "Gerente", 35, 123456789, 01),
-          new Empleados("Luis", "Martínez", "Calle tercera no.3", "Contador", 28, 987654321, 03),
-          new Empleados("Ana", "González", "Avenida central no.4", "Diseñadora", 30, 456789123, 04),
-          new Empleados("Pedro", "Sánchez", "Boulevard no.5", "Analista", 25, 789123456, 05)
-         
-        -->
-
+    <h1 th:text="${Nombre}"></h1>
+    <h2 th:text="${Servidor}"></h2>
+    <h2 th:text="${Materia}"></h2>
 </body>
 </html>

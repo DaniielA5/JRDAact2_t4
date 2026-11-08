@@ -18,7 +18,7 @@ public class EjemploController {
                                                 35, 123423434, 001 );
 
         model.addAttribute("Empleado", empleado1);
-        return "proyecto";
+        return "detalles_info";
     }
 
     @ModelAttribute("Empleados")
