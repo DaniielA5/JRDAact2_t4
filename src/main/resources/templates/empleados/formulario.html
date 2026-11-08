@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${proyecto} + ' - Nuevo empleado'">Nuevo empleado</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        form { display: grid; gap: .8rem; max-width: 400px; }
+        label { display: grid; gap: .2rem; font-weight: bold; }
+        input { padding: .4rem; font-size: 1rem; }
+        button { padding: .5rem; font-size: 1rem; cursor: pointer; }
+        .error { color: #b00020; }
+        footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: .9rem; }
+    </style>
+</head>
+<body>
+    <h1>Registrar empleado</h1>
+
+    <p class="error" th:if="${error}" th:text="${error}"></p>
+
+    <!-- th:object enlaza el form con el EmpleadoDTO del Model;
+         *{campo} = empleado.campo -->
+    <form th:action="@{/empleados/nuevo}" th:object="${empleado}" method="post">
+        <label>Nombre
+            <input type="text" th:field="*{nombre}" required>
+        </label>
+        <label>Apellido
+            <input type="text" th:field="*{apellido}">
+        </label>
+        <label>Puesto
+            <input type="text" th:field="*{puesto}" list="lista-puestos" required>
+        </label>
+        <label>Edad
+            <input type="number" th:field="*{edad}" min="18" max="99">
+        </label>
+        <button type="submit">Guardar</button>
+    </form>
+
+     <datalist id="lista-puestos">
+        <option th:each="p : ${puestos}" th:value="${p}"></option>
+    </datalist>
+
+    <p><a th:href="@{/empleados}">← Volver a la lista</a></p>
+
+    <footer>
+        Proyecto: <strong th:text="${proyecto}"></strong> ·
+        Autor: <strong th:text="${autor}"></strong>
+    </footer>
+</body>
+</html>

@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1 th:text="${empleado.nombre} + ' ' + ${empleado.apellido}">Empleado</h1>
-
+    <p th:if="${mensaje}" th:text="${mensaje}" style="color: #1b7a1b; font-weight: bold;"></p>
     <dl>
         <dt>ID</dt>     <dd th:text="${empleado.id}"></dd>
         <dt>Nombre</dt> <dd th:text="${empleado.nombre}"></dd>

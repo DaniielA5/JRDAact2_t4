@@ -42,9 +42,13 @@ public class EmpleadoService {
 
     public EmpleadoDTO crear(EmpleadoDTO dto) {
         int edad = dto.getEdad() != null ? dto.getEdad() : 0;
-        Empleados nuevo = new Empleados(dto.getNombre(), dto.getApellido(), "Sin dirección",
-                dto.getPuesto(), edad, 0, 0);
+        Empleados nuevo = new Empleados(limpio(dto.getNombre()), limpio(dto.getApellido()), "Sin dirección",
+                limpio(dto.getPuesto()), edad, 0, 0);
         return guardar(nuevo);
+    }
+
+    private String limpio(String texto) {
+        return texto == null ? "" : texto.trim();
     }
 
     private EmpleadoDTO guardar(Empleados e) {

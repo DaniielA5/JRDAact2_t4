@@ -12,7 +12,8 @@ import com.informaticonfig.spring.demoactividaduno.models.dto.EmpleadoDTO;
 import com.informaticonfig.spring.demoactividaduno.services.EmpleadoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller 
 @RequestMapping("/empleados")
@@ -44,6 +45,29 @@ public class EmpleadoController {
         return "empleados/lista";
     }
     
+    @GetMapping("/nuevo")
+    public String formulario(Model model) {
+        model.addAttribute("empleado", new EmpleadoDTO());
+        model.addAttribute("puestos", empleadoService.puesto());
+        return "empleados/formulario";
+    }
+    @PostMapping("/nuevo")
+    public String guardar(@ModelAttribute("empleado") EmpleadoDTO empleado,
+                        Model model,
+                        RedirectAttributes redirect) {
+
+        if (empleado.getNombre() == null || empleado.getNombre().isBlank()
+                || empleado.getPuesto() == null || empleado.getPuesto().isBlank()) {
+            model.addAttribute("error", "Nombre y puesto son obligatorios");
+            model.addAttribute("puestos", empleadoService.puesto());
+            return "empleados/formulario";
+        }
+
+        EmpleadoDTO creado = empleadoService.crear(empleado);
+        redirect.addFlashAttribute("mensaje", "Empleado registrado correctamente");
+        return "redirect:/empleados/" + creado.getId();
+    }
+
        @GetMapping("/{id}")
     public String detalle(@PathVariable int id, Model model) {
         Optional<EmpleadoDTO> empleado = empleadoService.buscarPorId(id);
