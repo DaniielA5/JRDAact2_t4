@@ -1,12 +1,7 @@
 package com.informaticonfig.spring.demoactividaduno.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
-
-import com.informaticonfig.spring.demoactividaduno.models.Empleados;
 import com.informaticonfig.spring.demoactividaduno.models.dto.ClaseDTO;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
