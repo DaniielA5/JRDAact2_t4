@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${proyecto} + ' - Empleados'">Empleados</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: .5rem; text-align: left; }
+        th { background: #f0f0f0; }
+        .filtros a { margin-right: .6rem; }
+        .activo { font-weight: bold; text-decoration: none; }
+        footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: .9rem; }
+    </style>
+</head>
+<body>
+    <h1>Lista de empleados</h1>
+
+    <p class="filtros">
+        Filtrar por puesto:
+        <a th:href="@{/empleados}"
+           th:classappend="${#strings.isEmpty(puestoActual)} ? 'activo'">Todos</a>
+        <a th:each="p : ${puestos}"
+           th:href="@{/empleados(puesto=${p})}"
+           th:text="${p}"
+           th:classappend="${p == puestoActual} ? 'activo'">Puesto</a>
+    </p>
+
+    <p th:unless="${#strings.isEmpty(puestoActual)}">
+        Mostrando puesto: <strong th:text="${puestoActual}"></strong>
+        (<span th:text="${#lists.size(empleados)}"></span> resultado(s))
+    </p>
+
+    <!-- Lista: th:each recorre la lista que mandó el controlador en el Model -->
+    <table th:unless="${#lists.isEmpty(empleados)}">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puesto</th>
+                <th>Edad</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="e : ${empleados}">
+                <td th:text="${e.id}"></td>
+                <td th:text="${e.nombre}"></td>
+                <td th:text="${e.apellido}"></td>
+                <td th:text="${e.puesto}"></td>
+                <td th:text="${e.edad}"></td>
+                <!-- Enlace al detalle: /empleados/{id} (@PathVariable) -->
+                <td><a th:href="@{/empleados/{id}(id=${e.id})}">Ver detalle</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p th:if="${#lists.isEmpty(empleados)}">No hay empleados con ese puesto.</p>
+
+    <footer>
+        Proyecto: <strong th:text="${proyecto}"></strong> ·
+        Autor: <strong th:text="${autor}"></strong>
+        <br><small>Valores leídos de application.properties con @Value</small>
+    </footer>
+</body>
+</html>

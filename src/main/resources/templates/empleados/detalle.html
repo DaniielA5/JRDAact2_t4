@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${empleado.nombre} + ' - Detalle'">Detalle</title>
+    <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1rem; }
+        dt { font-weight: bold; }
+        footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: .9rem; }
+    </style>
+</head>
+<body>
+    <h1 th:text="${empleado.nombre} + ' ' + ${empleado.apellido}">Empleado</h1>
+
+    <dl>
+        <dt>ID</dt>     <dd th:text="${empleado.id}"></dd>
+        <dt>Nombre</dt> <dd th:text="${empleado.nombre}"></dd>
+        <dt>Apellido</dt><dd th:text="${empleado.apellido}"></dd>
+        <dt>Puesto</dt> <dd th:text="${empleado.puesto}"></dd>
+        <dt>Edad</dt>   <dd th:text="${empleado.edad}"></dd>
+    </dl>
+
+    <p><a th:href="@{/empleados}">← Volver a la lista</a></p>
+
+    <footer>
+        Proyecto: <strong th:text="${proyecto}"></strong> ·
+        Autor: <strong th:text="${autor}"></strong>
+    </footer>
+</body>
+</html>
