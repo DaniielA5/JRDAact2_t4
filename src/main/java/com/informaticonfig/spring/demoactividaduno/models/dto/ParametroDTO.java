@@ -1,4 +1,4 @@
-package com.informaticonfig.spring.demoactividaduno.controllers;
+package com.informaticonfig.spring.demoactividaduno.models.dto;
 
 /**
  * ParametroDTO

@@ -3,6 +3,7 @@ package com.informaticonfig.spring.demoactividaduno.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.informaticonfig.spring.demoactividaduno.models.dto.ParametroDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
